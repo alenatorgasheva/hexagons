@@ -21,22 +21,25 @@
 
 
 from turtle import *
+import math
 
 
 def get_num_hexagons():
-    return
+    return 1
 
 
 def get_color_choice():
     return
 
 
-def side_length():
-    return
+def side_length(d):
+    side = d / 2 / math.cos(math.radians(30))
+    return side
 
 
-def d_length():
-    return
+def d_length(n):
+    d = 500 / (n + 0.5)
+    return d
 
 
 def draw_hexagon(x, y, side_len, color):
@@ -44,7 +47,9 @@ def draw_hexagon(x, y, side_len, color):
 
 
 def main():
-    pass
+    hexagon_number = get_num_hexagons()
+    d = d_length(hexagon_number)
+    side = side_length(d)
 
 
 main()
