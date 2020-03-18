@@ -24,12 +24,36 @@ import math
 
 
 def get_num_hexagons():
+    print('Пожалуйста, введите количество шестиугольников, располагаемых в ряд: ', end='')
     hexagon_number = int(input())
-    return hexagon_number
+    while hexagon_number > 20 or hexagon_number < 4:
+        print('Оно должно быть от 4 до 20. Пожалуйста повторите попытку: ', end='')
+        hexagon_number = int(input())
+    else:
+        return hexagon_number
 
 
 def get_color_choice():
-    return ('pink', 'lavender')
+    color_names = {'Красный': 'lightcoral', 'Оранжевый': 'bisque', 'Розовый': 'lightpink', 'Фиолетовый': 'violet',
+                   'Голубой': 'lightsteelblue', 'Синий': 'royalblue', 'Зеленый': 'palegreen'}
+    list_of_colors = []
+    for i in range(2):
+        print('Пожалуйста, введите цвет: ', end='')
+        answ = input()
+
+        def color_name(answ):
+            color = ''
+            if answ in color_names:
+                color = color_names[answ]
+            return color
+
+        while answ not in color_names:
+            print('"' + answ + '"', 'не является верным значением. Пожалуйста повторите попытку: ', end='')
+            answ = input()
+        else:
+            list_of_colors.append(color_name(answ))
+
+    return (list_of_colors[0], list_of_colors[1])
 
 
 def side_length(d):
@@ -82,8 +106,9 @@ def fill_space(x, y, d, s, number, color_1, color_2, ptr):
 def main():
     hexagon_number = get_num_hexagons()
     t.speed(10.5)
-    color_1,color_2 = get_color_choice()
-    fill_space(-250, 250, d_length(hexagon_number), side_length(d_length(hexagon_number)), hexagon_number, color_1, color_2, 1)
+    color_1, color_2 = get_color_choice()
+    fill_space(-250, 250, d_length(hexagon_number), side_length(d_length(hexagon_number)), hexagon_number, color_1,
+               color_2, 1)
     t.done()
 
 
