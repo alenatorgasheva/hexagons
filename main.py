@@ -24,21 +24,22 @@ import math
 
 
 def get_num_hexagons():
-    print('Пожалуйста, введите количество шестиугольников, располагаемых в ряд: ', end='')
+    print(lc.TXT_NUMBER, end='')
     hexagon_number = int(input())
     while hexagon_number > 20 or hexagon_number < 4:
-        print('Оно должно быть от 4 до 20. Пожалуйста повторите попытку: ', end='')
+        print(lc.TXT_ERROR, end='')
         hexagon_number = int(input())
     else:
         return hexagon_number
 
 
 def get_color_choice():
+    print(lc.TXT_COLOR_1)
     color_names = {'Красный': 'lightcoral', 'Оранжевый': 'bisque', 'Розовый': 'lightpink', 'Фиолетовый': 'violet',
                    'Голубой': 'lightsteelblue', 'Синий': 'royalblue', 'Зеленый': 'palegreen'}
     list_of_colors = []
     for i in range(2):
-        print('Пожалуйста, введите цвет: ', end='')
+        print(lc.TXT_COLOR, end='')
         answ = input()
 
         def color_name(answ):
@@ -48,7 +49,7 @@ def get_color_choice():
             return color
 
         while answ not in color_names:
-            print('"' + answ + '"', 'не является верным значением. Пожалуйста повторите попытку: ', end='')
+            print('"' + answ + '"', lc.TXT_ERROR_2, end='')
             answ = input()
         else:
             list_of_colors.append(color_name(answ))
@@ -101,6 +102,21 @@ def fill_space(x, y, d, s, number, color_1, color_2, ptr):
         else:
             draw_row(x, y - s * 1.5 * i, d, s, number, color_1, color_2)
             ptr += 1
+
+
+language = input('Choose your language:\n1. English\n2. Russian\n').lower()
+while True:
+    if language == 'english' or language == 'eng' or \
+            language == 'e' or language == '1':
+        import lc_eng as lc
+
+        break
+    elif language == 'russian' or language == 'rus' or \
+            language == 'r' or language == '2':
+        import lc_rus as lc
+
+        break
+    language = input('Please, choose language from proposed: ')
 
 
 def main():

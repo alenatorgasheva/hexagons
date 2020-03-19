@@ -1,0 +1,5 @@
+TXT_NUMBER = 'Please enter the number of hexagons arranged in a row: '
+TXT_ERROR = 'It must be between 4 and 20. Please try again: '
+TXT_COLOR_1 = 'Allowed fill colors: \n Red \n Orange \n Pink \n Purple \n Blue \n Dark Blue \n Green'
+TXT_COLOR = 'Please enter color: '
+TXT_ERROR_2 = 'not a valid value. Please try again: '
