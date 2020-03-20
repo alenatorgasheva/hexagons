@@ -3,7 +3,7 @@
 # Tesselation.
 
 # Developers : Daniel A.         (40%),
-#              Zemtseva A.       (%),
+#              Zemtseva A.       (35%),
 #              Torgasheva A.     (35%).
 
 
@@ -32,17 +32,17 @@ def get_color_choice():
     :return: two colors of hexagons
     """
     print(lc.TXT_COLOR_1)
-    color_names = {'Красный': 'lightcoral', 'Оранжевый': 'bisque', 'Розовый': 'lightpink', 'Фиолетовый': 'violet',
-                   'Голубой': 'lightsteelblue', 'Синий': 'royalblue', 'Зеленый': 'palegreen',
-                   'Red': 'lightcoral', 'Orange': 'bisque', 'Pink': 'lightpink', 'Purple': 'violet',
-                   'Blue': 'lightsteelblue', 'Dark Blue': 'royalblue', 'Green': 'palegreen'}
+    color_names = {'красный': 'lightcoral', 'оранжевый': 'bisque', 'розовый': 'lightpink', 'фиолетовый': 'violet',
+                   'голубой': 'lightsteelblue', 'синий': 'royalblue', 'зеленый': 'palegreen',
+                   'red': 'lightcoral', 'orange': 'bisque', 'pink': 'lightpink', 'purple': 'violet',
+                   'blue': 'lightsteelblue', 'dark blue': 'royalblue', 'green': 'palegreen'}
     list_of_colors = []
     for i in range(2):
         print(lc.TXT_COLOR, end='')
-        answer = input()
+        answer = input().lower()
         while answer not in color_names:
             print('"' + answer + '"', lc.TXT_ERROR_2, end='')
-            answer = input()
+            answer = input().lower()
         else:
             if answer in color_names:
                 color = color_names[answer]
