@@ -2,7 +2,7 @@
 
 # Tesselation.
 
-# Developers : Daniel A.         (%),
+# Developers : Daniel A.         (40%),
 #              Zemtseva A.       (%),
 #              Torgasheva A.     (35%).
 
@@ -32,24 +32,21 @@ def get_color_choice():
     :return: two colors of hexagons
     """
     print(lc.TXT_COLOR_1)
-    color_names = {'красный': 'lightcoral', 'оранжевый': 'bisque', 'розовый': 'lightpink', 'фиолетовый': 'violet',
-                   'голубой': 'lightsteelblue', 'синий': 'royalblue', 'зеленый': 'palegreen'}
+    color_names = {'Красный': 'lightcoral', 'Оранжевый': 'bisque', 'Розовый': 'lightpink', 'Фиолетовый': 'violet',
+                   'Голубой': 'lightsteelblue', 'Синий': 'royalblue', 'Зеленый': 'palegreen',
+                   'Red': 'lightcoral', 'Orange': 'bisque', 'Pink': 'lightpink', 'Purple': 'violet',
+                   'Blue': 'lightsteelblue', 'Dark Blue': 'royalblue', 'Green': 'palegreen'}
     list_of_colors = []
     for i in range(2):
         print(lc.TXT_COLOR, end='')
-        answ = input().lower()
-
-        def color_name(answ):
-            color = ''
-            if answ in color_names:
-                color = color_names[answ]
-            return color
-
+        answ = input()
         while answ not in color_names:
             print('"' + answ + '"', lc.TXT_ERROR_2, end='')
             answ = input()
         else:
-            list_of_colors.append(color_name(answ))
+            if answ in color_names:
+                color = color_names[answ]
+                list_of_colors.append(color)
 
     return (list_of_colors[0], list_of_colors[1])
 
@@ -156,10 +153,12 @@ while True:
     if language == 'english' or language == 'eng' or \
             language == 'e' or language == '1':
         import lc_eng as lc
+
         break
     elif language == 'russian' or language == 'rus' or \
             language == 'r' or language == '2':
         import lc_rus as lc
+
         break
     language = input('Please, choose language from proposed: ')
 print()
