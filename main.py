@@ -39,13 +39,13 @@ def get_color_choice():
     list_of_colors = []
     for i in range(2):
         print(lc.TXT_COLOR, end='')
-        answ = input()
-        while answ not in color_names:
-            print('"' + answ + '"', lc.TXT_ERROR_2, end='')
-            answ = input()
+        answer = input()
+        while answer not in color_names:
+            print('"' + answer + '"', lc.TXT_ERROR_2, end='')
+            answer = input()
         else:
-            if answ in color_names:
-                color = color_names[answ]
+            if answer in color_names:
+                color = color_names[answer]
                 list_of_colors.append(color)
 
     return (list_of_colors[0], list_of_colors[1])
