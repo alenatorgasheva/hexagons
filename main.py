@@ -1,22 +1,10 @@
 # Case - study
 
-# This program
+# Tesselation.
 
 # Developers : Daniel A.         (%),
 #              Zemtseva A.       (%),
-#              Torgasheva A.     (%).
-
-# Tasks:
-#       НАСТЯ
-#   - меню: цвет (get_color_choice), количество 6-угольников (get_num_hexagons) !!! Учесть возможность ошибки ввода
-#   - локализация
-#
-#       АЛИНА
-#   - нарисовать один шестиугольник, размещение шестигольников - в одной функции draw_hexagon
-#
-#       АЛЁНА
-#   - вычислить длинну стороны шестиугольника, а также величину d (см на картинке у Минака с формулами)
-#   - оформление программы (код ревью, комменты и т.д.)
+#              Torgasheva A.     (35%).
 
 
 import turtle as t
@@ -24,23 +12,32 @@ import math
 
 
 def get_num_hexagons():
+    """
+    Getting number of hexagons in one side.
+    :return: number of hexagons
+    """
     print(lc.TXT_NUMBER, end='')
     hexagon_number = int(input())
     while hexagon_number > 20 or hexagon_number < 4:
         print(lc.TXT_ERROR, end='')
         hexagon_number = int(input())
     else:
+        print()
         return hexagon_number
 
 
 def get_color_choice():
+    """
+    Getting colors of hexagons.
+    :return: two colors of hexagons
+    """
     print(lc.TXT_COLOR_1)
-    color_names = {'Красный': 'lightcoral', 'Оранжевый': 'bisque', 'Розовый': 'lightpink', 'Фиолетовый': 'violet',
-                   'Голубой': 'lightsteelblue', 'Синий': 'royalblue', 'Зеленый': 'palegreen'}
+    color_names = {'красный': 'lightcoral', 'оранжевый': 'bisque', 'розовый': 'lightpink', 'фиолетовый': 'violet',
+                   'голубой': 'lightsteelblue', 'синий': 'royalblue', 'зеленый': 'palegreen'}
     list_of_colors = []
     for i in range(2):
         print(lc.TXT_COLOR, end='')
-        answ = input()
+        answ = input().lower()
 
         def color_name(answ):
             color = ''
@@ -58,16 +55,34 @@ def get_color_choice():
 
 
 def side_length(d):
+    """
+    Calculation of hexagon's side.
+    :param d: hexagon's diameter
+    :return: hexagon's side
+    """
     side = d / 2 / math.cos(math.radians(30))
     return side
 
 
 def d_length(n):
+    """
+    Calculation of hexagon's diameter.
+    :param n: number of hexagons in one side
+    :return: hexagon's diameter
+    """
     d = 500 / (n + 0.5)
     return d
 
 
 def draw_hexagon(x, y, side_len, color):
+    """
+    Drawing one hexagon.
+    :param x: x coordinate
+    :param y: y coordinate
+    :param side_len: hexagon's side
+    :param color: color of hexagon
+    :return: None
+    """
     t.up()
     t.goto(x, y)
     t.down()
@@ -82,6 +97,17 @@ def draw_hexagon(x, y, side_len, color):
 
 
 def draw_row(x, y, d, s, number, color_1, color_2):
+    """
+    Drawing row of hexagons with interchangeable colors.
+    :param x: x coordinate
+    :param y: y coordinate
+    :param d: hexagon's diameter
+    :param s: hexagon's side
+    :param number: number of hexagons in one side
+    :param color_1: the first color of hexagon
+    :param color_2: the second color of hexagon
+    :return: None
+    """
     for i in range(number):
         if i % 2 == 0:
             color = color_1
@@ -92,6 +118,18 @@ def draw_row(x, y, d, s, number, color_1, color_2):
 
 
 def fill_space(x, y, d, s, number, color_1, color_2, ptr):
+    """
+    Filling space by rows of hexagons.
+    :param x: x coordinate
+    :param y: y coordinate
+    :param d: hexagon's diameter
+    :param s: hexagon's side
+    :param number: number of hexagons in one side
+    :param color_1: the first color of hexagon
+    :param color_2: the second color of hexagon
+    :param ptr: supportive variable for color rotations
+    :return: None
+    """
     for i in range(number):
         if ptr == 2:
             ptr = 0
@@ -104,21 +142,6 @@ def fill_space(x, y, d, s, number, color_1, color_2, ptr):
             ptr += 1
 
 
-language = input('Choose your language:\n1. English\n2. Russian\n').lower()
-while True:
-    if language == 'english' or language == 'eng' or \
-            language == 'e' or language == '1':
-        import lc_eng as lc
-
-        break
-    elif language == 'russian' or language == 'rus' or \
-            language == 'r' or language == '2':
-        import lc_rus as lc
-
-        break
-    language = input('Please, choose language from proposed: ')
-
-
 def main():
     hexagon_number = get_num_hexagons()
     t.speed(10.5)
@@ -128,4 +151,16 @@ def main():
     t.done()
 
 
+language = input('Choose your language:\n1. English\n2. Russian\n').lower()
+while True:
+    if language == 'english' or language == 'eng' or \
+            language == 'e' or language == '1':
+        import lc_eng as lc
+        break
+    elif language == 'russian' or language == 'rus' or \
+            language == 'r' or language == '2':
+        import lc_rus as lc
+        break
+    language = input('Please, choose language from proposed: ')
+print()
 main()
