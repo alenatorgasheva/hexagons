@@ -36,23 +36,20 @@ def get_num_hexagons():
 def get_color_choice():
     print(lc.TXT_COLOR_1)
     color_names = {'Красный': 'lightcoral', 'Оранжевый': 'bisque', 'Розовый': 'lightpink', 'Фиолетовый': 'violet',
-                   'Голубой': 'lightsteelblue', 'Синий': 'royalblue', 'Зеленый': 'palegreen'}
+                   'Голубой': 'lightsteelblue', 'Синий': 'royalblue', 'Зеленый': 'palegreen',
+                   'Red': 'lightcoral', 'Orange': 'bisque', 'Pink': 'lightpink', 'Purple': 'violet',
+                   'Blue': 'lightsteelblue', 'Dark Blue': 'royalblue', 'Green': 'palegreen'}
     list_of_colors = []
     for i in range(2):
         print(lc.TXT_COLOR, end='')
         answ = input()
-
-        def color_name(answ):
-            color = ''
-            if answ in color_names:
-                color = color_names[answ]
-            return color
-
         while answ not in color_names:
             print('"' + answ + '"', lc.TXT_ERROR_2, end='')
             answ = input()
         else:
-            list_of_colors.append(color_name(answ))
+            if answ in color_names:
+                color = color_names[answ]
+                list_of_colors.append(color)
 
     return (list_of_colors[0], list_of_colors[1])
 
